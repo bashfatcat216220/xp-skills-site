@@ -158,9 +158,10 @@ export function IEBody() {
 
 // ---- Display Properties (theme switcher) ---------------------------------
 
-export type ThemeId = 'luna' | 'olive' | 'silver'
+export type ThemeId = 'classic' | 'luna' | 'olive' | 'silver'
 export const THEMES: { id: ThemeId; label: string }[] = [
-  { id: 'luna', label: 'Default (blue)' },
+  { id: 'classic', label: 'Windows Classic' },
+  { id: 'luna', label: 'Luna (blue)' },
   { id: 'olive', label: 'Olive Green' },
   { id: 'silver', label: 'Silver' },
 ]

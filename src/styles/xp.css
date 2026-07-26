@@ -61,6 +61,25 @@ button {
   --sm-right: #d3e5fa;
 }
 
+:root[data-theme='classic'] {
+  --chrome: #d4d0c8;
+  --frame: #404040;
+  --frame-i: #808080;
+  --title-grad: linear-gradient(90deg, #0a246a 0%, #a6caf0 100%);
+  --title-grad-i: linear-gradient(90deg, #808080 0%, #c0c0c0 100%);
+  --title-text: #ffffff;
+  --cap-grad: #d4d0c8;
+  --taskbar: #d4d0c8;
+  --taskbar-line: #ffffff;
+  --tray: #d4d0c8;
+  --start-grad: #d4d0c8;
+  --menu-hi: #0a246a;
+  --sidebar-grad: #ffffff;
+  --panel-body: #ffffff;
+  --panel-link: #0a246a;
+  --sm-right: #d4d0c8;
+}
+
 :root[data-theme='olive'] {
   --chrome: #ece9d8;
   --frame: #55682b;
@@ -1486,6 +1505,222 @@ button {
   text-shadow: 1px 2px 2px rgba(0, 0, 30, 0.6);
   text-align: center;
   padding: 0 20px;
+}
+
+/* ---- Windows Classic (2000) structural overrides -------------------------------- */
+/* Square corners, grey raised frames, black caption glyphs, flat grey taskbar. */
+
+[data-theme='classic'] .xpwin {
+  border: 1px solid;
+  border-color: #dfdfdf #404040 #404040 #dfdfdf;
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #808080,
+    3px 4px 9px rgba(0, 0, 20, 0.45);
+  border-radius: 0;
+  padding: 3px;
+}
+
+[data-theme='classic'] .xpwin.is-inactive {
+  border-color: #dfdfdf #404040 #404040 #dfdfdf;
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #808080,
+    2px 3px 7px rgba(0, 0, 20, 0.28);
+}
+
+[data-theme='classic'] .xpwin.is-maximized {
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #808080;
+}
+
+[data-theme='classic'] .xpwin-titlebar {
+  border-radius: 0;
+  height: 22px;
+  padding: 0 3px 0 5px;
+}
+
+[data-theme='classic'] .xpwin-body {
+  margin: 3px 0 0;
+}
+
+[data-theme='classic'] .capbtn {
+  width: 17px;
+  height: 15px;
+  border-radius: 0;
+  background: #d4d0c8;
+  border: 1px solid;
+  border-color: #fff #404040 #404040 #fff;
+  box-shadow: inset -1px -1px 0 #808080;
+}
+
+[data-theme='classic'] .capbtn svg rect,
+[data-theme='classic'] .capbtn svg path {
+  fill: #000;
+}
+
+[data-theme='classic'] .capbtn:hover {
+  filter: none;
+  background: #e2dfd8;
+}
+
+[data-theme='classic'] .capbtn:active {
+  filter: none;
+  border-color: #404040 #fff #fff #404040;
+  box-shadow: inset 1px 1px 0 #808080;
+}
+
+[data-theme='classic'] .capbtn-close {
+  margin-left: 2px;
+  background: #d4d0c8;
+}
+
+[data-theme='classic'] .is-inactive .capbtn {
+  filter: none;
+}
+
+/* selection color goes navy */
+[data-theme='classic'] .desk-icon.is-selected .desk-icon-art {
+  background: rgba(10, 36, 106, 0.5);
+}
+
+[data-theme='classic'] .desk-icon.is-selected .desk-icon-label,
+[data-theme='classic'] .file-item.is-selected .file-label {
+  background: #0a246a;
+}
+
+[data-theme='classic'] .file-item.is-selected .file-icon {
+  background: rgba(10, 36, 106, 0.35);
+}
+
+/* taskbar */
+[data-theme='classic'] .taskbar {
+  border-top: 1px solid #fff;
+}
+
+[data-theme='classic'] .startbtn {
+  margin: 3px 8px 3px 2px;
+  padding: 0 9px;
+  border-radius: 0;
+  color: #000;
+  font-size: 11px;
+  font-style: normal;
+  text-shadow: none;
+  border: 1px solid;
+  border-color: #fff #404040 #404040 #fff;
+  box-shadow: inset -1px -1px 0 #808080;
+}
+
+[data-theme='classic'] .startbtn:hover {
+  filter: none;
+}
+
+[data-theme='classic'] .startbtn:active,
+[data-theme='classic'] .startbtn.is-open {
+  filter: none;
+  border-color: #404040 #fff #fff #404040;
+  box-shadow: inset 1px 1px 0 #808080;
+}
+
+[data-theme='classic'] .taskbtn {
+  border-radius: 0;
+  color: #000;
+  text-shadow: none;
+  background: #d4d0c8;
+  border: 1px solid;
+  border-color: #fff #404040 #404040 #fff;
+  box-shadow: inset -1px -1px 0 #808080;
+}
+
+[data-theme='classic'] .taskbtn:hover {
+  background: #e2dfd8;
+}
+
+[data-theme='classic'] .taskbtn.is-active {
+  background: #e8e6e0;
+  border-color: #404040 #fff #fff #404040;
+  box-shadow: inset 1px 1px 0 #808080;
+}
+
+[data-theme='classic'] .tray {
+  margin: 3px 2px;
+  color: #000;
+  text-shadow: none;
+  border: 1px solid;
+  border-color: #808080 #fff #fff #808080;
+  box-shadow: none;
+}
+
+/* start menu */
+[data-theme='classic'] .startmenu {
+  border-radius: 0;
+  border: 1px solid;
+  border-color: #dfdfdf #404040 #404040 #dfdfdf;
+  box-shadow: inset 1px 1px 0 #fff, 3px 3px 6px rgba(0, 0, 0, 0.4);
+  background: #d4d0c8;
+}
+
+[data-theme='classic'] .startmenu-header {
+  height: 46px;
+}
+
+[data-theme='classic'] .startmenu-columns {
+  border-top: none;
+}
+
+[data-theme='classic'] .startmenu-right {
+  border-left: 1px solid #808080;
+}
+
+[data-theme='classic'] .sm-item-right {
+  color: #000;
+  font-weight: normal;
+}
+
+[data-theme='classic'] .startmenu-footer {
+  background: #d4d0c8;
+  border-top: 1px solid #fff;
+}
+
+[data-theme='classic'] .sm-power {
+  color: #000;
+  text-shadow: none;
+}
+
+[data-theme='classic'] .sm-power:hover,
+[data-theme='classic'] .sm-power:focus-visible {
+  filter: none;
+}
+
+/* explorer web-view sidebar: white with navy rules */
+[data-theme='classic'] .exp-sidebar {
+  border-right: 1px solid #d4d0c8;
+}
+
+[data-theme='classic'] .sidepanel-head {
+  background: #fff;
+  border-radius: 0;
+  border-bottom: 2px solid #0a246a;
+  color: #000;
+}
+
+[data-theme='classic'] .sidepanel-body {
+  color: #000;
+  border-radius: 0;
+  border-bottom: 1px solid #d4d0c8;
+}
+
+[data-theme='classic'] .sp-detail-dim {
+  color: #666;
+}
+
+/* display properties preview */
+.theme-preview-classic .dp-title {
+  background: linear-gradient(90deg, #0a246a, #a6caf0);
+}
+
+.theme-preview-classic .dp-win-back .dp-title {
+  background: linear-gradient(90deg, #808080, #c0c0c0);
+}
+
+.theme-preview-classic .dp-win {
+  border-color: #404040;
+  background: #d4d0c8;
 }
 
 /* ---- Mobile: one maximized window, taskbar as nav ------------------------------ */

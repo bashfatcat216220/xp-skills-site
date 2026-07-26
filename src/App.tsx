@@ -70,7 +70,7 @@ export default function App() {
   )
   const [theme, setTheme] = useState<ThemeId>(() => {
     const t = localStorage.getItem(THEME_KEY)
-    return THEMES.some((x) => x.id === t) ? (t as ThemeId) : 'luna'
+    return THEMES.some((x) => x.id === t) ? (t as ThemeId) : 'classic'
   })
   const [startOpen, setStartOpen] = useState(false)
   const [ctx, setCtx] = useState<{ x: number; y: number } | null>(null)
