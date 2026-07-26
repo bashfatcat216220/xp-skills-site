@@ -102,10 +102,6 @@ export function StartMenu({
               </button>
             ))}
           <div className="sm-sep" />
-          <button type="button" role="menuitem" className="sm-item sm-item-right" onClick={() => go({ kind: 'recycle' })}>
-            <Icon name="recycle" size={20} />
-            <span>Recycle Bin</span>
-          </button>
           <button type="button" role="menuitem" className="sm-item sm-item-right" onClick={() => go({ kind: 'display' })}>
             <Icon name="computer" size={20} />
             <span>Display Properties</span>

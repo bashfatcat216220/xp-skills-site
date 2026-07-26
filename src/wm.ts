@@ -1,12 +1,6 @@
 // Window-manager state. One reducer owns every open window; components dispatch.
 
-export type WindowKind =
-  | 'explorer'
-  | 'skill'
-  | 'computer'
-  | 'recycle'
-  | 'ie'
-  | 'display'
+export type WindowKind = 'explorer' | 'skill' | 'computer' | 'ie' | 'display'
 
 export interface Win {
   id: string
@@ -55,7 +49,6 @@ const DEFAULT_SIZES: Record<WindowKind, { w: number; h: number }> = {
   explorer: { w: 760, h: 500 },
   skill: { w: 620, h: 540 },
   computer: { w: 440, h: 480 },
-  recycle: { w: 680, h: 440 },
   ie: { w: 640, h: 480 },
   display: { w: 400, h: 460 },
 }

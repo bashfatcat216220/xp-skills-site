@@ -1,8 +1,8 @@
-// Bodies for My Computer, Recycle Bin, Internet Explorer, Display Properties.
+// Bodies for My Computer, Internet Explorer, Display Properties.
 import { useState } from 'react'
-import { allSkills, folders, recycledIdeas, siteConfig } from '../content/skills'
+import { allSkills, folders, siteConfig } from '../content/skills'
 import type { OpenSpec } from '../wm'
-import { ExplorerChrome, FileItem, SidePanel } from './Explorer'
+import { ExplorerChrome, SidePanel } from './Explorer'
 import { Icon } from './icons'
 
 // ---- My Computer: About as a system properties sheet ---------------------
@@ -65,6 +65,12 @@ export function MyComputerBody({ open }: { open: (spec: OpenSpec) => void }) {
                 <br />
                 {siteConfig.tagline}
               </dd>
+              <dt>GitHub:</dt>
+              <dd>
+                <a href={siteConfig.github} target="_blank" rel="noreferrer">
+                  {siteConfig.github.replace('https://', '')}
+                </a>
+              </dd>
             </dl>
             <hr className="propsheet-hr" />
             <dl className="propsheet-dl">
@@ -82,9 +88,9 @@ export function MyComputerBody({ open }: { open: (spec: OpenSpec) => void }) {
             <div className="propsheet-about">
               <p>
                 A Claude Code skill is a SKILL.md file: a written procedure that teaches Claude
-                to do one job the same way every time — what to ask for, what to refuse, what
-                the output has to look like. These forty were written for practicing attorneys,
-                mostly litigation and counseling work.
+                to do one job the same way every time. It says what to ask for, what to refuse,
+                and what the output has to look like. These forty were written for practicing
+                attorneys, mostly litigation and counseling work.
               </p>
               <p>
                 The categories on the desktop are the actual taxonomy: skills that stress-test
@@ -94,64 +100,15 @@ export function MyComputerBody({ open }: { open: (spec: OpenSpec) => void }) {
               </p>
               <p>
                 The interface is 2003. The tools are not. Every document window has a Copy
-                skill markdown button — that is the working part of this site.
+                skill markdown button, and the code lives at{' '}
+                <a href={siteConfig.github} target="_blank" rel="noreferrer">
+                  {siteConfig.github.replace('https://', '')}
+                </a>
+                .
               </p>
             </div>
           </article>
         </div>
-      </div>
-    </ExplorerChrome>
-  )
-}
-
-// ---- Recycle Bin ---------------------------------------------------------
-
-export function RecycleBinBody() {
-  const [selected, setSelected] = useState<string | null>(null)
-  const item = recycledIdeas.find((r) => r.id === selected)
-  const sidebar = (
-    <>
-      <SidePanel title="Recycle Bin Tasks">
-        <span className="sp-link is-disabled">Empty the Recycle Bin</span>
-        <span className="sp-link is-disabled">Restore all items</span>
-      </SidePanel>
-      <SidePanel title="Details">
-        {item ? (
-          <>
-            <p className="sp-detail-title">{item.title}</p>
-            <p>{item.cutNote}</p>
-          </>
-        ) : (
-          <>
-            <p className="sp-detail-title">Recycle Bin</p>
-            <p className="sp-detail-dim">{recycledIdeas.length} objects</p>
-            <p>Skill ideas that did not survive contact with practice. Select one for the reason.</p>
-          </>
-        )}
-      </SidePanel>
-    </>
-  )
-  return (
-    <ExplorerChrome
-      address="Recycle Bin"
-      addressIcon="recycle"
-      sidebar={sidebar}
-      statusLeft={`${recycledIdeas.length} objects`}
-      statusRight="Not restorable"
-    >
-      <div className="exp-files exp-files-list" role="list" onClick={() => setSelected(null)}>
-        {recycledIdeas.map((r) => (
-          <div key={r.id} className="recycle-row" role="listitem">
-            <FileItem
-              icon="trashdoc"
-              label={r.title}
-              selected={selected === r.id}
-              onSelect={() => setSelected(r.id)}
-              onOpen={() => setSelected(r.id)}
-            />
-            <p className="recycle-note">{r.cutNote}</p>
-          </div>
-        ))}
       </div>
     </ExplorerChrome>
   )

@@ -1018,33 +1018,6 @@ button {
   min-width: 70px;
 }
 
-/* ---- Recycle Bin ---------------------------------------------------------- */
-
-.exp-files-list {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  grid-template-columns: none;
-}
-
-.recycle-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.recycle-row .file-item {
-  width: 112px;
-  flex-shrink: 0;
-}
-
-.recycle-note {
-  color: #58554a;
-  max-width: 400px;
-  line-height: 1.4;
-  user-select: text;
-}
-
 /* ---- Internet Explorer page ----------------------------------------------- */
 
 .iepage {
@@ -1567,12 +1540,6 @@ button {
 
   .skilldoc-article {
     padding: 14px;
-  }
-
-  .recycle-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
   }
 }
 

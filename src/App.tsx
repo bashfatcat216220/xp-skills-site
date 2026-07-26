@@ -13,7 +13,6 @@ import {
   DisplayPropertiesBody,
   IEBody,
   MyComputerBody,
-  RecycleBinBody,
   THEMES,
   type ThemeId,
 } from './components/AppWindows'
@@ -32,7 +31,6 @@ const DESKTOP_ICONS: DesktopIconDef[] = [
   { id: 'computer', label: 'My Computer', icon: 'computer' },
   ...folders.map((f): DesktopIconDef => ({ id: `folder:${f.id}`, label: f.title, icon: 'folder' })),
   { id: 'ie', label: 'Internet Explorer', icon: 'ie' },
-  { id: 'recycle', label: 'Recycle Bin', icon: 'recycle' },
 ]
 
 function titleFor(win: Win): string {
@@ -43,8 +41,6 @@ function titleFor(win: Win): string {
       return `${getSkill(win.skillId ?? '')?.title ?? 'Skill'} — SkillPad`
     case 'computer':
       return 'My Computer'
-    case 'recycle':
-      return 'Recycle Bin'
     case 'ie':
       return 'Contact — Internet Explorer'
     case 'display':
@@ -60,8 +56,6 @@ function iconFor(win: Win): IconName {
       return 'document'
     case 'computer':
       return 'computer'
-    case 'recycle':
-      return 'recycle'
     case 'ie':
       return 'ie'
     case 'display':
@@ -126,6 +120,7 @@ export default function App() {
       dispatch({ type: 'open', spec: { kind: 'explorer', folderId }, viewport })
     if (skillId && getSkill(skillId))
       dispatch({ type: 'open', spec: { kind: 'skill', skillId }, viewport })
+    if (params.has('about')) dispatch({ type: 'open', spec: { kind: 'computer' }, viewport })
     if (params.has('start')) setStartOpen(true)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -152,7 +147,6 @@ export default function App() {
   const openIcon = (id: string) => {
     if (id === 'computer') open({ kind: 'computer' })
     else if (id === 'ie') open({ kind: 'ie' })
-    else if (id === 'recycle') open({ kind: 'recycle' })
     else if (id.startsWith('folder:')) open({ kind: 'explorer', folderId: id.slice(7) })
   }
 
@@ -185,8 +179,6 @@ export default function App() {
       }
       case 'computer':
         return <MyComputerBody open={open} />
-      case 'recycle':
-        return <RecycleBinBody />
       case 'ie':
         return <IEBody />
       case 'display':

@@ -72,35 +72,6 @@ export function getFolder(id: string): FolderDef | undefined {
   return folders.find((f) => f.id === id)
 }
 
-// ---- Recycle Bin ---------------------------------------------------------
-
-export interface RecycledIdea {
-  id: string
-  title: string
-  cutNote: string
-}
-
-export const recycledIdeas: RecycledIdea[] = [
-  {
-    id: 'outcome-predictor',
-    title: 'Outcome Predictor',
-    cutNote:
-      'Cut: predicting a ruling from thin public data is astrology with a docket. The Calibration Ledger keeps the useful part.',
-  },
-  {
-    id: 'auto-brief',
-    title: 'Auto-Brief',
-    cutNote:
-      'Cut: a brief the attorney did not reason through is a liability, not a deliverable. Replaced by Flagged First Draft.',
-  },
-  {
-    id: 'settlement-whisperer',
-    title: 'Settlement Whisperer',
-    cutNote:
-      'Cut: reading opposing counsel’s "true reservation price" from their emails overpromised on evidence it did not have.',
-  },
-]
-
 // ---- Skill markdown export ----------------------------------------------
 
 export function skillToMarkdown(skill: Skill): string {
