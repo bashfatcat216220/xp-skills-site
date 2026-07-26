@@ -202,7 +202,7 @@ button {
   background: linear-gradient(180deg, #6d94b8 0%, #a3bfd8 70%, #b8cede 100%);
   user-select: none;
   /* the whole display sits a notch below full vibrance, like an old panel */
-  filter: saturate(0.82) contrast(0.97);
+  filter: saturate(0.9) contrast(0.98);
 }
 
 /* wallpaper on its own layer so it can be washed out harder than the UI */
@@ -211,7 +211,7 @@ button {
   position: absolute;
   inset: 0;
   background: url('../assets/bliss.jpg') center / cover no-repeat;
-  filter: saturate(0.55) brightness(0.95) contrast(0.9);
+  filter: saturate(0.74) brightness(0.97) contrast(0.94);
 }
 
 .wallpaper-hills {
