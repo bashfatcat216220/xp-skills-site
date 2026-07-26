@@ -570,6 +570,14 @@ button {
   font-size: 9px;
 }
 
+.addr-go {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 5px;
+  color: #000;
+}
+
 .exp-main {
   flex: 1;
   min-height: 0;
@@ -580,58 +588,78 @@ button {
   box-shadow: inset 1px 1px 0 #aca899;
 }
 
+/* Win2000 "web view" sidebar: white, big title, fading navy rule */
 .exp-sidebar {
-  width: 190px;
+  width: 192px;
   flex-shrink: 0;
   overflow-y: auto;
-  padding: 10px;
-  background: var(--sidebar-grad);
+  padding: 12px 12px 14px;
+  background: #ffffff;
+  border-right: 1px solid #d8d5c4;
 }
 
-.sidepanel {
-  margin-bottom: 10px;
-}
-
-.sidepanel-head {
-  width: 100%;
+.webview {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 4px 6px 4px 9px;
-  background: linear-gradient(90deg, #ffffff 0%, #cfddf8 100%);
-  border: none;
-  border-radius: 4px 4px 0 0;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.webview-icon {
+  display: block;
+  margin-bottom: 2px;
+}
+
+.webview-title {
+  font-family: Verdana, Tahoma, 'Segoe UI', sans-serif;
+  font-size: 17px;
   font-weight: bold;
-  font-size: 11px;
-  color: var(--panel-link);
-  cursor: pointer;
+  line-height: 1.15;
+  margin: 2px 0 4px;
 }
 
-.sidepanel-head:focus-visible {
-  outline: 1px dotted var(--panel-link);
+.webview-rule {
+  height: 2px;
+  flex-shrink: 0;
+  background: linear-gradient(90deg, #0a246a 0%, #4a76c4 50%, rgba(74, 118, 196, 0) 100%);
+  margin-bottom: 8px;
 }
 
-.sidepanel-chev {
-  display: flex;
-  transform: rotate(180deg);
-}
-
-.sidepanel-chev.is-open {
-  transform: none;
-}
-
-.sidepanel-body {
+.webview-desc {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  padding: 9px 10px;
-  background: var(--panel-body);
-  color: #1f3a6e;
-  border-radius: 0 0 2px 2px;
 }
 
-.sidepanel-body p {
-  line-height: 1.4;
+.webview-desc p {
+  line-height: 1.45;
+  color: #333;
+}
+
+.webview-item {
+  font-weight: bold;
+  color: #000;
+}
+
+.webview-dim {
+  color: #6b6b6b;
+}
+
+.webview-seealso {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 12px;
+  border-top: 1px solid #d8d5c4;
+  padding-top: 9px;
+}
+
+.webview-seealso-label {
+  font-weight: bold;
+  color: #000;
+}
+
+.webview .sp-link {
+  text-decoration: underline;
 }
 
 .sp-link {
@@ -1690,28 +1718,6 @@ button {
 [data-theme='classic'] .sm-power:hover,
 [data-theme='classic'] .sm-power:focus-visible {
   filter: none;
-}
-
-/* explorer web-view sidebar: white with navy rules */
-[data-theme='classic'] .exp-sidebar {
-  border-right: 1px solid #d4d0c8;
-}
-
-[data-theme='classic'] .sidepanel-head {
-  background: #fff;
-  border-radius: 0;
-  border-bottom: 2px solid #0a246a;
-  color: #000;
-}
-
-[data-theme='classic'] .sidepanel-body {
-  color: #000;
-  border-radius: 0;
-  border-bottom: 1px solid #d4d0c8;
-}
-
-[data-theme='classic'] .sp-detail-dim {
-  color: #666;
 }
 
 /* display properties preview */

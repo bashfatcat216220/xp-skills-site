@@ -78,6 +78,19 @@ export function ExplorerChrome({
             ▾
           </span>
         </span>
+        <span className="addr-go" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 16 16">
+            <path
+              d="M2 8 L10 8 M7 4.5 L10.5 8 L7 11.5"
+              fill="none"
+              stroke="#3d5e93"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          Go
+        </span>
       </div>
       <div className="exp-main">
         {sidebar && <div className="exp-sidebar">{sidebar}</div>}
@@ -91,39 +104,33 @@ export function ExplorerChrome({
   )
 }
 
-export function SidePanel({
+// ---- Win2000-style "web view" sidebar ------------------------------------
+
+export function WebView({
+  icon,
   title,
   children,
-  defaultOpen = true,
+  seeAlso,
 }: {
+  icon: IconName
   title: string
   children: React.ReactNode
-  defaultOpen?: boolean
+  seeAlso?: React.ReactNode
 }) {
-  const [open, setOpen] = useState(defaultOpen)
   return (
-    <div className="sidepanel">
-      <button
-        type="button"
-        className="sidepanel-head"
-        aria-expanded={open}
-        onClick={() => setOpen(!open)}
-      >
-        <span>{title}</span>
-        <span className={'sidepanel-chev' + (open ? ' is-open' : '')} aria-hidden="true">
-          <svg viewBox="0 0 16 16" width="16" height="16">
-            <circle cx="8" cy="8" r="7.2" fill="#fff" stroke="#B5C7E8" />
-            <path
-              d="M4.5 9.5 L8 6 L11.5 9.5 M4.5 12.5 L8 9 L11.5 12.5"
-              fill="none"
-              stroke="#4D6185"
-              strokeWidth="1.6"
-              transform="translate(0,-1.5)"
-            />
-          </svg>
-        </span>
-      </button>
-      {open && <div className="sidepanel-body">{children}</div>}
+    <div className="webview">
+      <span className="webview-icon">
+        <Icon name={icon} size={44} />
+      </span>
+      <h2 className="webview-title">{title}</h2>
+      <div className="webview-rule" />
+      <div className="webview-desc">{children}</div>
+      {seeAlso && (
+        <div className="webview-seealso">
+          <p className="webview-seealso-label">See also:</p>
+          {seeAlso}
+        </div>
+      )}
     </div>
   )
 }
@@ -169,63 +176,59 @@ export function FolderExplorer({
   const selectedSkill = items.find((s) => s.id === selected)
 
   const sidebar = (
-    <>
-      {!isRoot && (
-        <SidePanel title="File and Folder Tasks">
-          <button type="button" className="sp-link" onClick={copyFolder}>
-            Copy all skills in this folder (markdown)
-          </button>
-          {selectedSkill && (
-            <button
-              type="button"
-              className="sp-link"
-              onClick={() => open({ kind: 'skill', skillId: selectedSkill.id })}
-            >
-              Open {selectedSkill.title}
+    <WebView
+      icon={isRoot ? 'folderOpen' : 'folder'}
+      title={isRoot ? 'My Skills' : folder?.title ?? ''}
+      seeAlso={
+        <>
+          {!isRoot && (
+            <button type="button" className="sp-link" onClick={copyFolder}>
+              Copy all skills (markdown)
             </button>
           )}
-        </SidePanel>
+          <button type="button" className="sp-link" onClick={minimizeSelf}>
+            Desktop
+          </button>
+          <button type="button" className="sp-link" onClick={() => open({ kind: 'computer' })}>
+            My Computer
+          </button>
+          {folders
+            .filter((f) => f.id !== current)
+            .slice(0, 3)
+            .map((f) => (
+              <button key={f.id} type="button" className="sp-link" onClick={() => navigate(f.id)}>
+                {f.title}
+              </button>
+            ))}
+        </>
+      }
+    >
+      {selectedSkill ? (
+        <>
+          <p className="webview-item">{selectedSkill.title}</p>
+          <p className="webview-dim">
+            Claude Code skill · {selectedSkill.status === 'shipped' ? 'Shipped' : 'Draft'}
+          </p>
+          <p>{selectedSkill.oneLiner}</p>
+          <button
+            type="button"
+            className="sp-link"
+            onClick={() => open({ kind: 'skill', skillId: selectedSkill.id })}
+          >
+            Open {selectedSkill.title}
+          </button>
+        </>
+      ) : (
+        <>
+          <p className="webview-dim">Select an item to view its description.</p>
+          <p>
+            {isRoot
+              ? 'Claude Code skills for practicing attorneys, filed by category.'
+              : folder?.blurb}
+          </p>
+        </>
       )}
-      <SidePanel title="Other Places">
-        <button type="button" className="sp-link" onClick={minimizeSelf}>
-          Desktop
-        </button>
-        <button type="button" className="sp-link" onClick={() => open({ kind: 'computer' })}>
-          My Computer
-        </button>
-        {folders
-          .filter((f) => f.id !== current)
-          .slice(0, 4)
-          .map((f) => (
-            <button key={f.id} type="button" className="sp-link" onClick={() => navigate(f.id)}>
-              {f.title}
-            </button>
-          ))}
-      </SidePanel>
-      <SidePanel title="Details">
-        {selectedSkill ? (
-          <>
-            <p className="sp-detail-title">{selectedSkill.title}</p>
-            <p className="sp-detail-dim">
-              Claude Code skill · {selectedSkill.status === 'shipped' ? 'Shipped' : 'Draft'}
-            </p>
-            <p>{selectedSkill.oneLiner}</p>
-          </>
-        ) : isRoot ? (
-          <>
-            <p className="sp-detail-title">My Skills</p>
-            <p className="sp-detail-dim">{folders.length} folders</p>
-            <p>Claude Code skills for practicing attorneys, filed by category.</p>
-          </>
-        ) : (
-          <>
-            <p className="sp-detail-title">{folder?.title}</p>
-            <p className="sp-detail-dim">{items.length} skills</p>
-            <p>{folder?.blurb}</p>
-          </>
-        )}
-      </SidePanel>
-    </>
+    </WebView>
   )
 
   return (

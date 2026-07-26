@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { allSkills, folders, siteConfig } from '../content/skills'
 import type { OpenSpec } from '../wm'
-import { ExplorerChrome, SidePanel } from './Explorer'
+import { ExplorerChrome, WebView } from './Explorer'
 import { Icon } from './icons'
 
 // ---- My Computer: About as a system properties sheet ---------------------
@@ -10,21 +10,29 @@ import { Icon } from './icons'
 export function MyComputerBody({ open }: { open: (spec: OpenSpec) => void }) {
   const shipped = allSkills.filter((s) => s.status === 'shipped').length
   const sidebar = (
-    <SidePanel title="Other Places">
-      {folders.slice(0, 3).map((f) => (
-        <button
-          key={f.id}
-          type="button"
-          className="sp-link"
-          onClick={() => open({ kind: 'explorer', folderId: f.id })}
-        >
-          {f.title}
-        </button>
-      ))}
-      <button type="button" className="sp-link" onClick={() => open({ kind: 'ie' })}>
-        Contact
-      </button>
-    </SidePanel>
+    <WebView
+      icon="computer"
+      title="My Computer"
+      seeAlso={
+        <>
+          {folders.slice(0, 3).map((f) => (
+            <button
+              key={f.id}
+              type="button"
+              className="sp-link"
+              onClick={() => open({ kind: 'explorer', folderId: f.id })}
+            >
+              {f.title}
+            </button>
+          ))}
+          <button type="button" className="sp-link" onClick={() => open({ kind: 'ie' })}>
+            Contact
+          </button>
+        </>
+      }
+    >
+      <p>What this collection is, who wrote it, and where the code lives.</p>
+    </WebView>
   )
   return (
     <ExplorerChrome

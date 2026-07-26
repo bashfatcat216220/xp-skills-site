@@ -273,27 +273,26 @@ const ART: Record<IconName, JSX.Element> = {
 
   back: (
     <g>
-      <defs>
-        <radialGradient id="xg-nav" cx="0.35" cy="0.3" r="0.9">
-          <stop offset="0" stopColor="#8BD46E" />
-          <stop offset="1" stopColor="#2E7D26" />
-        </radialGradient>
-      </defs>
-      <circle cx="16" cy="16" r="12.5" fill="url(#xg-nav)" stroke="#1E5518" strokeWidth="1" />
-      <path d="M18.5 9.5 L11 16 L18.5 22.5 L18.5 18.5 L23 18.5 L23 13.5 L18.5 13.5 Z" fill="#FFFFFF" />
+      <path
+        d="M28 12.5 L14.5 12.5 L14.5 6.5 L4 16 L14.5 25.5 L14.5 19.5 L28 19.5 Z"
+        fill="#3D5E93"
+        stroke="#16294A"
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+      />
+      <path d="M14.5 12.5 L14.5 8.5 M14.5 19.5 L27 19.2" stroke="#8FA8CE" strokeWidth="0.8" fill="none" opacity="0.7" />
     </g>
   ),
 
   forward: (
     <g>
-      <defs>
-        <radialGradient id="xg-nav2" cx="0.35" cy="0.3" r="0.9">
-          <stop offset="0" stopColor="#8BD46E" />
-          <stop offset="1" stopColor="#2E7D26" />
-        </radialGradient>
-      </defs>
-      <circle cx="16" cy="16" r="12.5" fill="url(#xg-nav2)" stroke="#1E5518" strokeWidth="1" />
-      <path d="M13.5 9.5 L21 16 L13.5 22.5 L13.5 18.5 L9 18.5 L9 13.5 L13.5 13.5 Z" fill="#FFFFFF" />
+      <path
+        d="M4 12.5 L17.5 12.5 L17.5 6.5 L28 16 L17.5 25.5 L17.5 19.5 L4 19.5 Z"
+        fill="#3D5E93"
+        stroke="#16294A"
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+      />
     </g>
   ),
 
@@ -302,7 +301,12 @@ const ART: Record<IconName, JSX.Element> = {
       <rect x="4" y="10" width="24" height="16" rx="1.2" fill="url(#xg-fold-front)" stroke="#8C6119" strokeWidth="1" />
       {folderDefs}
       <path d="M4 10 L4 8.4 Q4 7 5.4 7 L10.6 7 Q11.6 7 12.2 7.9 L13.6 10 Z" fill="#E8A33D" stroke="#8C6119" strokeWidth="1" />
-      <path d="M20 24 L20 17 L16.5 17 L22 10.5 L27.5 17 L24 17 L24 24 Z" fill="#5CB444" stroke="#2E7D26" strokeWidth="1" />
+      <path
+        d="M20 24 L20 17 L16.5 17 L22 10.5 L27.5 17 L24 17 L24 24 Z"
+        fill="#3D5E93"
+        stroke="#16294A"
+        strokeWidth="1"
+      />
     </g>
   ),
 
