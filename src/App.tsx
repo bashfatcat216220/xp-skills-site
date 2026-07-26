@@ -2,7 +2,7 @@ import { useEffect, useReducer, useRef, useState } from 'react'
 import { initialWM, topWindow, wmReducer, type OpenSpec, type Win } from './wm'
 import { folders, getFolder, getSkill } from './content/skills'
 import { Window } from './components/Window'
-import { Wallpaper, DesktopIcon, type DesktopIconDef } from './components/Desktop'
+import { DesktopIcon, type DesktopIconDef } from './components/Desktop'
 import { Taskbar } from './components/Taskbar'
 import { StartMenu } from './components/StartMenu'
 import { ContextMenu } from './components/ContextMenu'
@@ -208,7 +208,6 @@ export default function App() {
         if (startOpen) setStartOpen(false)
       }}
     >
-      <Wallpaper />
       <main
         className="desktop-surface"
         onClick={() => setSelectedIcon(null)}

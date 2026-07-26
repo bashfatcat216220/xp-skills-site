@@ -180,7 +180,13 @@ button {
   position: fixed;
   inset: 0;
   overflow: hidden;
+  /* gradient stays underneath as the pre-load fallback */
   background: linear-gradient(180deg, #4b8ecf 0%, #96c7f2 70%, #b7dcf8 100%);
+  background-image: url('../assets/bliss.jpg'),
+    linear-gradient(180deg, #4b8ecf 0%, #96c7f2 70%, #b7dcf8 100%);
+  background-size: cover, auto;
+  background-position: center, center;
+  background-repeat: no-repeat;
   user-select: none;
 }
 
