@@ -84,7 +84,7 @@ export function DesktopIcon({
       onFocus={onSelect}
     >
       <span className="desk-icon-art">
-        <Icon name={def.icon} size={38} />
+        <Icon name={def.icon} size={48} />
       </span>
       <span className="desk-icon-label">{def.label}</span>
     </div>
