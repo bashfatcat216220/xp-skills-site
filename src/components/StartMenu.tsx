@@ -47,13 +47,6 @@ export function StartMenu({
               <small>Email and links</small>
             </span>
           </button>
-          <a className="sm-item" role="menuitem" href={siteConfig.resumeUrl}>
-            <Icon name="document" size={24} />
-            <span>
-              <b>Résumé</b>
-              <small>TODO: attach</small>
-            </span>
-          </a>
           <a
             className="sm-item"
             role="menuitem"

@@ -207,7 +207,7 @@ export function FolderExplorer({
         <>
           <p className="webview-item">{selectedSkill.title}</p>
           <p className="webview-dim">
-            Claude Code skill · {selectedSkill.status === 'shipped' ? 'Shipped' : 'Draft'}
+            Claude skill · {selectedSkill.status === 'shipped' ? 'Shipped' : 'Draft'}
           </p>
           <p>{selectedSkill.oneLiner}</p>
           <button
@@ -223,7 +223,7 @@ export function FolderExplorer({
           <p className="webview-dim">Select an item to view its description.</p>
           <p>
             {isRoot
-              ? 'Claude Code skills for practicing attorneys, filed by category.'
+              ? 'Claude skills for practicing attorneys, filed by category.'
               : folder?.blurb}
           </p>
         </>

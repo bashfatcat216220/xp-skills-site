@@ -86,8 +86,7 @@ export function MyComputerBody({ open }: { open: (spec: OpenSpec) => void }) {
               <dd>
                 One human, one Claude Code CLI
                 <br />
-                {allSkills.length} skills installed ({shipped} shipped,{' '}
-                {allSkills.length - shipped} draft)
+                {allSkills.length} skills installed, {shipped} shipped
                 <br />
                 {folders.length} folders, 0 unread memos
               </dd>
@@ -95,16 +94,19 @@ export function MyComputerBody({ open }: { open: (spec: OpenSpec) => void }) {
             <hr className="propsheet-hr" />
             <div className="propsheet-about">
               <p>
-                A Claude Code skill is a SKILL.md file: a written procedure that teaches Claude
-                to do one job the same way every time. It says what to ask for, what to refuse,
-                and what the output has to look like. These forty were written for practicing
-                attorneys, mostly litigation and counseling work.
+                A Claude skill is a SKILL.md file: a written procedure that teaches Claude to
+                do one job the same way every time. It says what to ask for, what to refuse,
+                and what the output has to look like. These twelve are a working set for a
+                practicing attorney, not samples.
               </p>
               <p>
-                The categories on the desktop are the actual taxonomy: skills that stress-test
-                an argument before opposing counsel does, skills that keep judgment calls
-                honest, skills that audit how a conclusion was reached, and skills that make
-                Claude behave like a careful junior associate rather than a confident one.
+                The two folders on the desktop are the real split. AI Governance holds five
+                skills for an outside-counsel practice with one main client: impact
+                assessments, vendor AI terms review, regulatory gap analysis, and a per-system
+                AI Act inventory, all reading a standing client profile. General Practice
+                holds research memory plus six thinking tools that work on any matter: the
+                opposing case, the pre-mortem, load-bearing assumptions, the concession map,
+                register shift, and the regulator read.
               </p>
               <p>
                 The interface is 2003. The tools are not. Every document window has a Copy
@@ -136,9 +138,9 @@ export function IEBody() {
         <article className="iepage-inner">
           <h1>Contact</h1>
           <p>
-            I write Claude Code skills for lawyers and run them on their behalf. If one of the
-            documents on this desktop would be useful in your practice, the markdown is one
-            click away and the rest is conversation.
+            I write Claude skills for lawyers and run them on their behalf. If one of the
+            documents on this desktop would be useful in your practice, the full SKILL.md is
+            one click away and the rest is conversation.
           </p>
           <ul className="iepage-links">
             <li>
@@ -149,9 +151,6 @@ export function IEBody() {
                 GitHub
               </a>{' '}
               — code and skill repositories
-            </li>
-            <li>
-              <a href={siteConfig.resumeUrl}>Résumé</a> — TODO: attach the current one
             </li>
           </ul>
           <p className="iepage-fine">

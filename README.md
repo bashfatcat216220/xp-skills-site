@@ -24,13 +24,13 @@ The build is fully static (`base: './'`), so either works as-is:
 ## Editing content
 
 All skill copy lives in `src/content/folders/*.ts` — one file per desktop
-folder, typed as `Skill[]` (see `src/content/types.ts`). Add or edit a skill
-there; no component changes needed. Set `skillMd` on a skill to replace the
-TODO box with the real SKILL.md body (it also becomes what the Copy button
-copies).
+folder, typed as `Skill[]` (see `src/content/types.ts`). The real SKILL.md
+bodies live in `src/content/skillmd/*.md` and are embedded via Vite `?raw`
+imports; `skillMd` is what the "Copy skill markdown" button copies. To update
+a skill, replace its `.md` file and rebuild.
 
-Owner details (name, email, GitHub, résumé link) are in `siteConfig` at the
-top of `src/content/skills.ts`. The résumé link is still a TODO.
+Owner details (name, email, GitHub) are in `siteConfig` at the top of
+`src/content/skills.ts`.
 
 ## Deep links
 

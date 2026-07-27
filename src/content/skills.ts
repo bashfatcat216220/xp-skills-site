@@ -1,64 +1,33 @@
 import type { FolderDef, Skill } from './types'
-import { skills as argumentStressTesting } from './folders/argument-stress-testing'
-import { skills as decisionQuality } from './folders/decision-quality'
-import { skills as reasoningAudit } from './folders/reasoning-audit'
-import { skills as theAssociate } from './folders/the-associate'
-import { skills as regulatoryIntelligence } from './folders/regulatory-intelligence'
-import { skills as aiGovernancePrivacy } from './folders/ai-governance-privacy'
+import { skills as aiGovernance } from './folders/ai-governance'
+import { skills as generalPractice } from './folders/general-practice'
 
 // ---- Site owner ----------------------------------------------------------
-// TODO: adjust these before deploying.
 export const siteConfig = {
   userName: 'Bing',
-  tagline: 'Claude Code skills for attorneys',
+  tagline: 'Claude skills for attorneys',
   email: 'merry.riddle@gmail.com',
   github: 'https://github.com/bashfatcat216220',
-  resumeUrl: '#', // TODO: link a real résumé (or remove the Start-menu item)
 }
 
 // ---- Folders -------------------------------------------------------------
 
 export const folders: FolderDef[] = [
   {
-    id: 'argument-stress-testing',
-    title: 'Argument Stress-Testing',
-    blurb: 'Skills that attack your position before opposing counsel does.',
+    id: 'ai-governance',
+    title: 'AI Governance',
+    blurb:
+      'Five skills for an outside-counsel AI governance practice with one main client, adapted from Anthropic\'s claude-for-legal toolkit. They all read the standing client profile first.',
   },
   {
-    id: 'decision-quality',
-    title: 'Decision Quality',
-    blurb: 'Skills for making judgment calls you can defend six months later.',
-  },
-  {
-    id: 'reasoning-audit',
-    title: 'Reasoning Audit',
-    blurb: 'Skills that examine how a conclusion was reached, not whether it sounds right.',
-  },
-  {
-    id: 'the-associate',
-    title: 'The Associate',
-    blurb: 'Skills that make Claude work like a disciplined junior associate.',
-  },
-  {
-    id: 'regulatory-intelligence',
-    title: 'Regulatory Intelligence',
-    blurb: 'Skills for reading regulators as moving systems, not static texts.',
-  },
-  {
-    id: 'ai-governance-privacy',
-    title: 'AI Governance & Privacy',
-    blurb: 'Skills for AI Act, DPIA, and automated-decision counseling work.',
+    id: 'general-practice',
+    title: 'General Practice',
+    blurb:
+      'Seven skills that work across any matter, any client: research memory, and six thinking tools that stress-test a position before it ships.',
   },
 ]
 
-export const allSkills: Skill[] = [
-  ...argumentStressTesting,
-  ...decisionQuality,
-  ...reasoningAudit,
-  ...theAssociate,
-  ...regulatoryIntelligence,
-  ...aiGovernancePrivacy,
-]
+export const allSkills: Skill[] = [...aiGovernance, ...generalPractice]
 
 export function skillsInFolder(folderId: string): Skill[] {
   return allSkills.filter((s) => s.folder === folderId)
@@ -75,6 +44,8 @@ export function getFolder(id: string): FolderDef | undefined {
 // ---- Skill markdown export ----------------------------------------------
 
 export function skillToMarkdown(skill: Skill): string {
+  // When the real SKILL.md is embedded, that is the artifact worth copying.
+  if (skill.skillMd) return skill.skillMd
   return [
     '---',
     `name: ${skill.id}`,
