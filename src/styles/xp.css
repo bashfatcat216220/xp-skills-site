@@ -240,6 +240,7 @@ button {
 
 .desk-icon {
   pointer-events: auto;
+  touch-action: manipulation;
   width: 94px;
   display: flex;
   flex-direction: column;
@@ -717,6 +718,7 @@ button {
   align-items: center;
   gap: 3px;
   padding: 3px 2px;
+  touch-action: manipulation;
 }
 
 .file-icon {

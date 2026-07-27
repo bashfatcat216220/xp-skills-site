@@ -6,6 +6,10 @@ export interface DesktopIconDef {
   icon: IconName
 }
 
+/** Touch screens don't double-click; a single tap opens there. */
+export const touchOpens = (): boolean =>
+  window.matchMedia('(pointer: coarse)').matches
+
 export function Wallpaper() {
   // CSS homage to rolling hills — layered beziers, no photograph.
   return (
@@ -75,7 +79,8 @@ export function DesktopIcon({
       aria-label={def.label}
       onClick={(e) => {
         e.stopPropagation()
-        onSelect()
+        if (touchOpens()) onOpen()
+        else onSelect()
       }}
       onDoubleClick={onOpen}
       onKeyDown={(e) => {

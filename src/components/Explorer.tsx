@@ -3,6 +3,7 @@ import { folders, getFolder, skillsInFolder, skillToMarkdown } from '../content/
 import type { Skill } from '../content/types'
 import type { OpenSpec } from '../wm'
 import { Icon, IconName } from './icons'
+import { touchOpens } from './Desktop'
 
 const MENUS = ['File', 'Edit', 'View', 'Favorites', 'Tools', 'Help']
 
@@ -306,7 +307,8 @@ export function FileItem({
       tabIndex={0}
       onClick={(e) => {
         e.stopPropagation()
-        onSelect()
+        if (touchOpens()) onOpen()
+        else onSelect()
       }}
       onDoubleClick={onOpen}
       onKeyDown={(e) => {
