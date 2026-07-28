@@ -10,6 +10,7 @@ export type IconName =
   | 'computer'
   | 'recycle'
   | 'ie'
+  | 'mail'
   | 'avatar'
   | 'flag'
   | 'back'
@@ -245,6 +246,21 @@ const ART: Record<IconName, JSX.Element> = {
         strokeWidth="2.2"
         strokeLinecap="round"
       />
+    </g>
+  ),
+
+  mail: (
+    <g>
+      <defs>
+        <linearGradient id="xg-mail" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#FFFFFF" />
+          <stop offset="1" stopColor="#D9E2F0" />
+        </linearGradient>
+      </defs>
+      <ellipse cx="16" cy="27.4" rx="11" ry="1.8" fill="rgba(10,30,60,0.2)" />
+      <rect x="4" y="8" width="24" height="18" rx="1.5" fill="url(#xg-mail)" stroke="#4A5D82" strokeWidth="1" />
+      <path d="M4.5 9 L16 18.5 L27.5 9" fill="none" stroke="#4A5D82" strokeWidth="1.1" />
+      <path d="M4.5 25.5 L12.5 17.5 M27.5 25.5 L19.5 17.5" fill="none" stroke="#8FA3C2" strokeWidth="0.9" />
     </g>
   ),
 

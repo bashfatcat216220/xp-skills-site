@@ -40,13 +40,13 @@ export function StartMenu({
               <small>Who wrote these</small>
             </span>
           </button>
-          <button type="button" role="menuitem" className="sm-item" onClick={() => go({ kind: 'ie' })}>
-            <Icon name="ie" size={24} />
+          <a className="sm-item" role="menuitem" href={`mailto:${siteConfig.email}`}>
+            <Icon name="mail" size={24} />
             <span>
               <b>Contact</b>
-              <small>Email and links</small>
+              <small>{siteConfig.email}</small>
             </span>
-          </button>
+          </a>
           <a
             className="sm-item"
             role="menuitem"

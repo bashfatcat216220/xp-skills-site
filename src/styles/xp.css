@@ -1072,53 +1072,6 @@ button {
   min-width: 70px;
 }
 
-/* ---- Internet Explorer page ----------------------------------------------- */
-
-.iepage {
-  min-height: 100%;
-  background: #fff;
-  padding: 26px 30px;
-}
-
-.iepage-inner {
-  max-width: 540px;
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 15px;
-  line-height: 1.55;
-  user-select: text;
-  cursor: text;
-}
-
-.iepage-inner h1 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.iepage-inner a {
-  color: #0000ee;
-}
-
-.iepage-inner a:visited {
-  color: #551a8b;
-}
-
-.iepage-links {
-  margin: 14px 0;
-  padding-left: 24px;
-}
-
-.iepage-links li {
-  margin-bottom: 7px;
-}
-
-.iepage-fine {
-  font-size: 13px;
-  color: #555;
-  border-top: 1px solid #ccc;
-  padding-top: 10px;
-  margin-top: 24px;
-}
-
 /* ---- Taskbar --------------------------------------------------------------- */
 
 .taskbar {

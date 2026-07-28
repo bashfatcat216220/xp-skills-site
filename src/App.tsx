@@ -11,7 +11,6 @@ import { FolderExplorer } from './components/Explorer'
 import { SkillDoc } from './components/SkillWindow'
 import {
   DisplayPropertiesBody,
-  IEBody,
   MyComputerBody,
   THEMES,
   type ThemeId,
@@ -30,7 +29,6 @@ function prefersReducedMotion(): boolean {
 const DESKTOP_ICONS: DesktopIconDef[] = [
   { id: 'computer', label: 'My Computer', icon: 'computer' },
   ...folders.map((f): DesktopIconDef => ({ id: `folder:${f.id}`, label: f.title, icon: 'folder' })),
-  { id: 'ie', label: 'Internet Explorer', icon: 'ie' },
 ]
 
 function titleFor(win: Win): string {
@@ -41,8 +39,6 @@ function titleFor(win: Win): string {
       return `${getSkill(win.skillId ?? '')?.title ?? 'Skill'} — SkillPad`
     case 'computer':
       return 'My Computer'
-    case 'ie':
-      return 'Contact — Internet Explorer'
     case 'display':
       return 'Display Properties'
   }
@@ -56,8 +52,6 @@ function iconFor(win: Win): IconName {
       return 'document'
     case 'computer':
       return 'computer'
-    case 'ie':
-      return 'ie'
     case 'display':
       return 'computer'
   }
@@ -146,7 +140,6 @@ export default function App() {
 
   const openIcon = (id: string) => {
     if (id === 'computer') open({ kind: 'computer' })
-    else if (id === 'ie') open({ kind: 'ie' })
     else if (id.startsWith('folder:')) open({ kind: 'explorer', folderId: id.slice(7) })
   }
 
@@ -179,8 +172,6 @@ export default function App() {
       }
       case 'computer':
         return <MyComputerBody open={open} />
-      case 'ie':
-        return <IEBody />
       case 'display':
         return (
           <DisplayPropertiesBody

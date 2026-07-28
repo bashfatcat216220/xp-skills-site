@@ -1,6 +1,7 @@
 import type { FolderDef, Skill } from './types'
 import { skills as aiGovernance } from './folders/ai-governance'
 import { skills as generalPractice } from './folders/general-practice'
+import { skills as aiGovernanceToolkit } from './folders/ai-governance-toolkit'
 
 // ---- Site owner ----------------------------------------------------------
 export const siteConfig = {
@@ -25,9 +26,19 @@ export const folders: FolderDef[] = [
     blurb:
       'Seven skills that work across any matter, any client: research memory, and six thinking tools that stress-test a position before it ships.',
   },
+  {
+    id: 'ai-governance-toolkit',
+    title: 'AI Governance Toolkit',
+    blurb:
+      'The chat-ready adaptation of the ai-governance-legal plugin from Anthropic\'s claude-for-legal: onboarding, triage, policy work, monitoring, and the practice profile template the rest read. Four of these are the ancestors of the client-adapted skills in AI Governance.',
+  },
 ]
 
-export const allSkills: Skill[] = [...aiGovernance, ...generalPractice]
+export const allSkills: Skill[] = [
+  ...aiGovernance,
+  ...generalPractice,
+  ...aiGovernanceToolkit,
+]
 
 export function skillsInFolder(folderId: string): Skill[] {
   return allSkills.filter((s) => s.folder === folderId)

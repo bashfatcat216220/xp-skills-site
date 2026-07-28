@@ -1,6 +1,6 @@
 // Window-manager state. One reducer owns every open window; components dispatch.
 
-export type WindowKind = 'explorer' | 'skill' | 'computer' | 'ie' | 'display'
+export type WindowKind = 'explorer' | 'skill' | 'computer' | 'display'
 
 export interface Win {
   id: string
@@ -45,12 +45,13 @@ export type WMAction =
   | { type: 'move'; id: string; x: number; y: number }
   | { type: 'resize'; id: string; x: number; y: number; w: number; h: number }
 
-const DEFAULT_SIZES: Record<WindowKind, { w: number; h: number }> = {
-  explorer: { w: 760, h: 500 },
-  skill: { w: 620, h: 540 },
-  computer: { w: 440, h: 480 },
-  ie: { w: 640, h: 480 },
-  display: { w: 400, h: 460 },
+// Display Properties stays a small dialog; every other window opens big,
+// close to filling the screen above the taskbar.
+function defaultSize(kind: WindowKind, vw: number, vh: number): { w: number; h: number } {
+  if (kind === 'display') return { w: 400, h: 460 }
+  const w = Math.min(Math.max(Math.round(vw * 0.86), 600), vw - 24)
+  const h = Math.min(Math.max(Math.round((vh - 30) * 0.93), 400), vh - 30 - 12)
+  return { w, h }
 }
 
 export function windowKey(spec: OpenSpec): string {
@@ -71,12 +72,13 @@ export function wmReducer(state: WMState, action: WMAction): WMState {
       const key = windowKey(action.spec)
       const existing = state.windows.find((w) => windowKey(w) === key)
       if (existing) return wmReducer(state, { type: 'focus', id: existing.id })
-      const size = DEFAULT_SIZES[action.spec.kind]
-      const w = Math.min(size.w, action.viewport.w - 24)
-      const h = Math.min(size.h, action.viewport.h - 60)
-      const step = (state.cascade % 8) * 26
-      const x = Math.max(8, Math.min(90 + step, action.viewport.w - w - 8))
-      const y = Math.max(4, Math.min(48 + step, action.viewport.h - h - 40))
+      const size = defaultSize(action.spec.kind, action.viewport.w, action.viewport.h)
+      const w = size.w
+      const h = size.h
+      const step = (state.cascade % 6) * 18
+      const base = Math.max(8, Math.round((action.viewport.w - w) / 2) - 30)
+      const x = Math.max(8, Math.min(base + step, action.viewport.w - w - 8))
+      const y = Math.max(4, Math.min(14 + step, action.viewport.h - h - 40))
       const win: Win = {
         id: key,
         kind: action.spec.kind,

@@ -1,4 +1,4 @@
-// Bodies for My Computer, Internet Explorer, Display Properties.
+// Bodies for My Computer and Display Properties.
 import { useState } from 'react'
 import { allSkills, folders, siteConfig } from '../content/skills'
 import type { OpenSpec } from '../wm'
@@ -25,9 +25,9 @@ export function MyComputerBody({ open }: { open: (spec: OpenSpec) => void }) {
               {f.title}
             </button>
           ))}
-          <button type="button" className="sp-link" onClick={() => open({ kind: 'ie' })}>
+          <a className="sp-link" href={`mailto:${siteConfig.email}`}>
             Contact
-          </button>
+          </a>
         </>
       }
     >
@@ -79,6 +79,10 @@ export function MyComputerBody({ open }: { open: (spec: OpenSpec) => void }) {
                   {siteConfig.github.replace('https://', '')}
                 </a>
               </dd>
+              <dt>Email:</dt>
+              <dd>
+                <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+              </dd>
             </dl>
             <hr className="propsheet-hr" />
             <dl className="propsheet-dl">
@@ -96,17 +100,17 @@ export function MyComputerBody({ open }: { open: (spec: OpenSpec) => void }) {
               <p>
                 A Claude skill is a SKILL.md file: a written procedure that teaches Claude to
                 do one job the same way every time. It says what to ask for, what to refuse,
-                and what the output has to look like. These twelve are a working set for a
+                and what the output has to look like. Everything here is a working set for a
                 practicing attorney, not samples.
               </p>
               <p>
-                The two folders on the desktop are the real split. AI Governance holds five
-                skills for an outside-counsel practice with one main client: impact
-                assessments, vendor AI terms review, regulatory gap analysis, and a per-system
-                AI Act inventory, all reading a standing client profile. General Practice
-                holds research memory plus six thinking tools that work on any matter: the
-                opposing case, the pre-mortem, load-bearing assumptions, the concession map,
-                register shift, and the regulator read.
+                The three folders on the desktop are the real split. AI Governance holds five
+                skills adapted for an outside-counsel practice with one main client, all
+                reading a standing client profile. General Practice holds research memory
+                plus six thinking tools that work on any matter. AI Governance Toolkit is
+                the chat-ready adaptation of the ai-governance-legal plugin from
+                Anthropic&rsquo;s claude-for-legal — onboarding, triage, policy work, and
+                monitoring — including the practice profile template the rest of it reads.
               </p>
               <p>
                 The interface is 2003. The tools are not. Every document window has a Copy
@@ -114,50 +118,12 @@ export function MyComputerBody({ open }: { open: (spec: OpenSpec) => void }) {
                 <a href={siteConfig.github} target="_blank" rel="noreferrer">
                   {siteConfig.github.replace('https://', '')}
                 </a>
-                .
+                . Nothing on this site is legal advice; it is tooling for people licensed to
+                give some.
               </p>
             </div>
           </article>
         </div>
-      </div>
-    </ExplorerChrome>
-  )
-}
-
-// ---- Internet Explorer: contact page -------------------------------------
-
-export function IEBody() {
-  return (
-    <ExplorerChrome
-      address="about:contact"
-      addressIcon="ie"
-      statusLeft="Done"
-      statusRight="Internet"
-    >
-      <div className="iepage">
-        <article className="iepage-inner">
-          <h1>Contact</h1>
-          <p>
-            I write Claude skills for lawyers and run them on their behalf. If one of the
-            documents on this desktop would be useful in your practice, the full SKILL.md is
-            one click away and the rest is conversation.
-          </p>
-          <ul className="iepage-links">
-            <li>
-              <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a> — email, read daily
-            </li>
-            <li>
-              <a href={siteConfig.github} target="_blank" rel="noreferrer">
-                GitHub
-              </a>{' '}
-              — code and skill repositories
-            </li>
-          </ul>
-          <p className="iepage-fine">
-            Nothing on this site is legal advice. It is tooling for people licensed to give
-            some.
-          </p>
-        </article>
       </div>
     </ExplorerChrome>
   )
