@@ -2,6 +2,8 @@ import type { FolderDef, Skill } from './types'
 import { skills as aiGovernance } from './folders/ai-governance'
 import { skills as generalPractice } from './folders/general-practice'
 import { skills as aiGovernanceToolkit } from './folders/ai-governance-toolkit'
+import { skills as julieMethod } from './folders/julie-method'
+import { skills as kmPractice } from './folders/km-practice'
 
 // ---- Site owner ----------------------------------------------------------
 export const siteConfig = {
@@ -32,12 +34,26 @@ export const folders: FolderDef[] = [
     blurb:
       'The chat-ready adaptation of the ai-governance-legal plugin from Anthropic\'s claude-for-legal: onboarding, triage, policy work, monitoring, and the practice profile template the rest read. Four of these are the ancestors of the client-adapted skills in AI Governance.',
   },
+  {
+    id: 'julie-method',
+    title: "Julie's Method",
+    blurb:
+      'Five skills distilled from one attorney\'s actual practice: how she reasons through a question, reviews a document, writes, pressure-tests a conclusion, and briefs executives. The method layer the substantive skills run on.',
+  },
+  {
+    id: 'km-practice',
+    title: 'KM Practice',
+    blurb:
+      'The team\'s AI and privacy review stack: analysis frameworks, contract checklists, the end-to-end vendor review workflow, and the institutional-knowledge pair that keeps a matter library current and queryable.',
+  },
 ]
 
 export const allSkills: Skill[] = [
   ...aiGovernance,
   ...generalPractice,
   ...aiGovernanceToolkit,
+  ...julieMethod,
+  ...kmPractice,
 ]
 
 export function skillsInFolder(folderId: string): Skill[] {

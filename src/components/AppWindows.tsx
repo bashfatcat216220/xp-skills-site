@@ -104,13 +104,14 @@ export function MyComputerBody({ open }: { open: (spec: OpenSpec) => void }) {
                 practicing attorney, not samples.
               </p>
               <p>
-                The three folders on the desktop are the real split. AI Governance holds five
-                skills adapted for an outside-counsel practice with one main client, all
-                reading a standing client profile. General Practice holds research memory
-                plus six thinking tools that work on any matter. AI Governance Toolkit is
-                the chat-ready adaptation of the ai-governance-legal plugin from
-                Anthropic&rsquo;s claude-for-legal — onboarding, triage, policy work, and
-                monitoring — including the practice profile template the rest of it reads.
+                The folders on the desktop are the real map. AI Governance holds five skills
+                adapted for an outside-counsel practice with one main client. General
+                Practice holds research memory plus six thinking tools that work on any
+                matter. AI Governance Toolkit is the chat-ready adaptation of the
+                ai-governance-legal plugin from Anthropic&rsquo;s claude-for-legal.
+                Julie&rsquo;s Method distills how one attorney reasons, reviews, writes, and
+                briefs. KM Practice is the team&rsquo;s AI and privacy review stack, from
+                analysis framework to signed cover sheet.
               </p>
               <p>
                 The interface is 2003. The tools are not. Every document window has a Copy
